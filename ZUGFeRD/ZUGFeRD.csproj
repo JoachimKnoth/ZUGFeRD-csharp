@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net461;net480;net8.0</TargetFrameworks>
-    <Version>18.0.1</Version>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net8.0</TargetFrameworks>
+    <Version>18.0.1-softics.1</Version>
     <Authors>Stephan Stapel</Authors>
     <Company>STwo Industries GmbH</Company>
     <Description>Open-source .NET library for reading and creating ZUGFeRD, Factur-X and XRechnung documents. Maintainer support ends on November 30, 2026. From December 1, 2026, this package will be deprecated (Legacy). Existing versions remain available under their existing open-source license. 
@@ -18,14 +18,18 @@ Active development continues in FactoorSharp, the commercial successor: https://
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>ZUGFeRD.snk</AssemblyOriginatorKeyFile>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PackageReleaseNotes>18.0.0
+    <PackageReleaseNotes>18.0.1-softics.1 (Softics GmbH build of upstream 18.0.1 + PR #988)
+* Added QuantityCodes G26 (stere) and M68 (cord) from UN/ECE Rec 20
+* Dropped the net461/net480 targets (not buildable on macOS/Linux; SoftBill consumes net8.0)
+
+18.0.0
 * Removed obsolete functions
 * Added optional GrossQuantity, renaming normal quantity to NetQuantity
 * Replaced some ElectronicAddressSchemeIdentifiers values for more readable alternatives
 * Lots of bugfixes
 
 This is the last major version of ZUGFeRD-csharp. For new features, go to https://www.factoorsharp.de</PackageReleaseNotes>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>ZUGFeRD-csharp</PackageId>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/stephanstapel/ZUGFeRD-csharp/</RepositoryUrl>
@@ -37,12 +41,6 @@ This is the last major version of ZUGFeRD-csharp. For new features, go to https:
 	<EmbedUntrackedSources>true</EmbedUntrackedSources>
 	<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	<RootNamespace>s2industries.ZUGFeRD</RootNamespace>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>bin\Debug</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>bin\Release</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\README.md">
